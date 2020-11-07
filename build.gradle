@@ -1,5 +1,4 @@
 plugins {
-    id 'org.springframework.boot' version '2.3.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
     id 'maven-publish'
@@ -10,15 +9,9 @@ group = 'uk.codersparks.codersparks-home-assistant'
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter:2.3.5.RELEASE'
     implementation 'io.resourcepool:ssdp-client:2.4.3'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
-}
-
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '2.3.4.RELEASE'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
 }
 
 repositories {
