@@ -1,10 +1,19 @@
 plugins {
+    id 'org.springframework.boot' version '2.3.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
     id 'maven-publish'
 }
 
 group = 'uk.codersparks.codersparks-home-assistant'
-sourceCompatibility = '11'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter:2.3.5.RELEASE'
+    implementation 'io.resourcepool:ssdp-client:2.4.3'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+}
 
 configurations {
     compileOnly {
@@ -16,21 +25,12 @@ repositories {
     mavenCentral()
 }
 
-// Trying to fix publish to github packages: https://stackoverflow.com/a/62645933
-configurations {
-    [apiElements, runtimeElements].each {
-        it.outgoing.artifacts.removeIf {
-            it.buildDependencies.getDependencies(null).contains(jar)
-        }
-        it.outgoing.artifact(bootJar)
-    }
-}
 
 publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/codersparks-home-assistant/<insert-project-name>")
+            url = uri("https://maven.pkg.github.com/codersparks-home-assistant/ssdp-spring-boot-starter")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
