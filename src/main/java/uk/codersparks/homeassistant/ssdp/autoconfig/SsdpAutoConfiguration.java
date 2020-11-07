@@ -65,30 +65,6 @@ public class SsdpAutoConfiguration {
     }
 
 
-    @Bean
-    public SsdpClient ssdpClient() {
-        return SsdpClient.create();
-    }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public DiscoveryListener noopDiscoveryListener() {
-        return new DiscoveryListener() {
-            @Override
-            public void onServiceDiscovered(SsdpService service) {
-
-            }
-
-            @Override
-            public void onServiceAnnouncement(SsdpServiceAnnouncement announcement) {
-
-            }
-
-            @Override
-            public void onFailed(Exception ex) {
-
-            }
-        };
-    }
 
 }
