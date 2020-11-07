@@ -1,4 +1,4 @@
-package uk.codersparks.homeassistant.ssdp.autoconfig;
+package uk.codersparks.homeassistant.ssdp.config;
 
 import io.resourcepool.ssdp.client.SsdpClient;
 import io.resourcepool.ssdp.model.DiscoveryListener;
